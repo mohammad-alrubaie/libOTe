@@ -6,6 +6,13 @@ set(SRCS "${SRCS}")
 
 add_library(libOTe STATIC ${SRCS})
 
+set_target_properties(libOTe PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+)
+
+set_target_properties(cryptoTools PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+)
 
 # make projects that include libOTe use this as an include folder
 target_include_directories(libOTe PUBLIC
@@ -14,7 +21,7 @@ target_include_directories(libOTe PUBLIC
 target_include_directories(libOTe PUBLIC
                     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
                     $<INSTALL_INTERFACE:include>)
-                    
+
 target_link_libraries(libOTe cryptoTools)
 
 if(MSVC)

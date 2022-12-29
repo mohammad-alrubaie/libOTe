@@ -6,6 +6,12 @@ endif (POLICY CMP0048)
 
 project(libOTe VERSION 2.0.4)
 
+# Use "-fPIC" / "-fPIE" for all targets by default, including static libs
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+# CMake doesn't add "-pie" by default for executables (CMake issue #14983)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pie")
+
 include(cmake/libOTePreamble.cmake)
 
 if("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
