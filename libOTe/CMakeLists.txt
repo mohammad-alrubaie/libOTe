@@ -6,13 +6,9 @@ set(SRCS "${SRCS}")
 
 add_library(libOTe STATIC ${SRCS})
 
-set_target_properties(libOTe PROPERTIES
-    POSITION_INDEPENDENT_CODE ON
-)
+# set_target_properties(libOTe PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-set_target_properties(cryptoTools PROPERTIES
-    POSITION_INDEPENDENT_CODE ON
-)
+# set_target_properties(cryptoTools PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # make projects that include libOTe use this as an include folder
 target_include_directories(libOTe PUBLIC
